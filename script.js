@@ -17,17 +17,32 @@ const getUpper = () => {
 }
 const getLower = () => {
     return lowerLetters[Math.floor(Math.random()*lowerLetters.length)]
-    
 }
 const getNumbers = () => {
     return numbersLetters[Math.floor(Math.random()*numbersLetters.length)]
-
 }
 const getSymbols = () => {
     return symbolsLetters[Math.floor(Math.random()*symbolsLetters.length)]
-
 }
 const getPassword = () => {
-    password.textContent = getLower()
+    check()
+    const len = length.value
+    let s = ''
+    for (let i = 0; i < len; i++) {
+        // s += getLower()
+        
+    }
+    password.textContent = s
+}
+const check = () => {
+    const arr = []
+    switch (true) {
+        case upper.checked:
+            console.log('upper')
+            break;
+        default:
+            console.log('nothing')
+    }
+
 }
 generate.addEventListener('click', () => getPassword())
