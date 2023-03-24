@@ -25,24 +25,41 @@ const getSymbols = () => {
     return symbolsLetters[Math.floor(Math.random()*symbolsLetters.length)]
 }
 const getPassword = () => {
-    check()
     const len = length.value
     let s = ''
     for (let i = 0; i < len; i++) {
-        // s += getLower()
-        
+        const x = generateX()
+        // randomly generate 4 different chars, but only add 1 letter?
+        s += x
     }
     password.textContent = s
 }
-const check = () => {
+const generateX = () => {
     const arr = []
-    switch (true) {
-        case upper.checked:
-            console.log('upper')
-            break;
-        default:
-            console.log('nothing')
-    }
-
+    // for each letter in string, add 4 random chars into array
+    if (upper.checked) { arr.push(getUpper()) }
+    if (lower.checked) { arr.push(getLower()) }
+    if (numbers.checked) { arr.push(getNumbers()) }
+    if (symbols.checked) { arr.push(getSymbols()) }
+    console.log(arr)
+    // randomize the order of array but only return 1 letter?
+    return arr[Math.floor(Math.random()*arr.length)]
 }
+// const check = () => {
+//     const arr = []
+//     switch (true) {
+//         case upper.checked:
+//             arr.push(getUpper())
+//         case lower.checked:
+//             arr.push(getLower())
+//         case numbers.checked:
+//             arr.push(getNumbers())
+//         case symbols.checked:
+//             arr.push(getSymbols())
+//         default:
+//             break
+//     }
+//     return arr
+
+// }
 generate.addEventListener('click', () => getPassword())
